@@ -1,14 +1,34 @@
 var places = [
-{country: "Aalborg, Denmark" , airport:"(AAL)"}
-{country:"Aalesund, Norway" , airpot:"(AES)"}
-{country:"Aarhus, Denmark - Bus service" , airport:"(ZID)"}
-{country:"Aarhus, Denmark - Tirstrup" , airport:"(AAR)"}
-{country:"Aasiaat, Greenland" , airport:"(JEG)"}
-{country:"Abadan, Iran" , airport:"(ABD)"}
-{country:"Abakan, Russia" , airport:"(ABA)"}
-{country:"Aberdeen, United Kingdom" , airport:"(ABZ)"}
-{country:"Abha, Saudi Arabia" , airport:"(AHB)"}
-{country:"Abidjan, Cote d'Ivoire" , airport:"(ABJ)"}
-{country:"Abu Dhabi, United Arab Emirates" , airport:"(AUH)"}
-{country:"Abu Simbel, Egypt" , airport:"(ABS)"}
+{country: "London, United Kingdom" , airport:"Heathrow-(LHR)"},
+{country: "Paris, France" , airport:"Charles Degaulle-(CDG)"},
+{country: "Rome, Italy" , airport:"Fiumicino-(FCO)"},
+{country: "Bangkok, Thailand" , airport:"(BKK)"},
+{country: "Ho Chi Minh City, Vietnam" , airport:"(SGN)"},
+{country: "Sydney, Australia" , airport:"(SYD)"},
+{country: "Dubai, United Arab Emirates" , airport:"(DXB)"},
+{country: "Cape Town, South Africa" , airport:"(CPT)"},
+{country: "Rio De Janeiro, Brazil" , airport:"(GIG)"},
+{country: "Reykjavik, Iceland" , airport:"(KEF)"}
 ]
+
+document.addEventListener('keydown', function() {
+  var results = ''
+  document.querySelector(".image-container").innerHTML = ''
+  for (var i = 0; i < places.length; i++) {
+    var country = places[i].country + " " +  places[i].airport
+    //console.log(event.target.value);
+    if (country.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
+            //console.log(country)
+            results += "<li class='list-group-item' id='" + i +  "'>" + country + "</li>"
+      }
+    }
+    console.log(results)
+    if(results !== null){
+      document.querySelector(".list-group").innerHTML = results
+    }
+
+    document.querySelector("li.list-group-item").addEventListener("click", function(e){
+        document.querySelector(".search").value = this.innerHTML
+        document.querySelector(".list-group").innerHTML = ''
+    })
+})
