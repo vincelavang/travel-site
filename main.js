@@ -30,5 +30,6 @@ document.addEventListener('keydown', function() {
     document.querySelector("li.list-group-item").addEventListener("click", function(e){
         document.querySelector(".search").value = this.innerHTML
         document.querySelector(".list-group").innerHTML = ''
+        document.querySelector(".image-container").innerHTML = "<img src='/Users/Vince/travel-site/pictures/" + this.id  + ".jpg'/><br><p>" + this.innerHTML  + "</p>"
     })
 })

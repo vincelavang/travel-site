@@ -1,8 +1,8 @@
 .search {
-  width: 300px;
+  width: 100%;
   border-style: solid;
 }
 
-.row {
-  max-width: 300px;
+.image-container img {
+  width: 100%;
 }
