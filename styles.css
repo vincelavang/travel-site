@@ -16,10 +16,19 @@
 .check-in {
   width: 100%;
   padding-top: 1.5em;
+  height: 325.39px;
 }
 
 .passports {
   width: 100%;
   padding-top: 1.5em;
   height: 325.39px;
+}
+
+#title {
+  font-weight: bold;
+}
+
+#text {
+  color: black;
 }
