@@ -25,12 +25,6 @@ function createAirport(place) {
   return $airport
 }
 
-function totalTime($start, $end) {
-  var startDate = Date.UTC($start.getFullYear, $start.getMonth, $start.getDate)
-  var endDate = Date.UTC($end.getFullYear, $end.getMonth, $end.getDate)
-  return Math.floor((endDate - startDate) / msPerDay)
-}
-
 document.addEventListener('keydown', function() {
   $list.innerHTML = ""
   for (var i = 0; i < places.length; i++) {
@@ -51,10 +45,10 @@ $list.addEventListener("click", function(event){
   var startDate = new Date($start)
   var endDate = new Date($end)
   var totalTime = Math.round(endDate.getTime()- startDate.getTime()) / (msPerDay)
-  //console.log(totalTime)
+  console.log(totalTime)
   var id = event.target.id
   var place = findPlace (id, places)
-  var $place = renderPlace (place)
+  var $place = renderPlace (place, totalTime)
   $imageContainer.appendChild($place)
 })
 
@@ -67,7 +61,7 @@ function findPlace (id, places) {
   }
 }
 
-function renderPlace (place) {
+function renderPlace (place , days) {
   var $place = document.createElement('div')
   var $image = document.createElement('img')
   $image.setAttribute('src', "pictures/" + place.id + ".jpg")
@@ -82,7 +76,7 @@ function renderPlace (place) {
   $price.appendChild($data)
   $price = document.createElement('p')
   $title.textContent = "Price: "
-  $data.textContent = place.price
+  $data.textContent = "$ " + ((place.price * days) - (place.price * days) * .75)
 
   var $attractions = document.createElement('div')
   var $title = document.createElement('span')
@@ -106,6 +100,6 @@ function renderPlace (place) {
   $duration.appendChild($data)
   $duration = document.createElement('p')
   $title.textContent = "Duration: "
-  $data.textContent = place.duration
+  $data.textContent = days + " days"
   return $place
 }
