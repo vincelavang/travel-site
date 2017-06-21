@@ -143,23 +143,28 @@ function renderPlace (place , days) {
   var $newOrder = document.querySelector('#newOrder')
   var $money = document.createElement('span')
   var calcTax = [(place.price * days) - (place.price * days * .75)] * (.0775)
-  console.log(calcTax)
+  //console.log(calcTax)
   var tripTotal = (place.price * days) - (place.price * days * .75)
-  console.log(tripTotal)
+  //console.log(tripTotal)
   $money.textContent = "$ " + (calcTax + tripTotal)
-  console.log($money.textContent)
+  //console.log($money.textContent)
   $order.appendChild($newOrder)
   $newOrder.appendChild($money)
 
-  var $picSummary = document.querySelector('#picSummary')
-  var $media = document.querySelector('#media')
-  var $firstItem = document.querySelector('#firstItem')
+  var $review = document.querySelector('#review')
+  var $pic = document.querySelector('#pic')
+  var $test = document.createElement('div')
+  $test.classList.add('col-md-12')
   var $image = document.createElement('img')
-  $image.classList.add('media-object')
+  $image.classList.add('thumbnail')
   $image.setAttribute('src', "pictures/" + place.id + ".jpg")
-  $picSummary.appendChild($media)
-  $media.appendChild($firstItem)
-  $firstItem.appendChild($image)
+  var $summary = document.createElement('span')
+  $summary.textContent = place.country + " -" + days + " days"
+  $review.appendChild($test)
+  $pic.appendChild($test)
+  $test.appendChild($image)
+  $test.appendChild($summary)
+
   return $place
 }
 

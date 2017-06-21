@@ -40,15 +40,6 @@ body {
   border-color: black;
 }
 
-#firstItem {
-  height: 100px;
-  width: 100px;
-}
-
-.col-md-pull-6 {
-  right: 31%;
-}
-
 .col-md-push-6 {
   left: 67%;
 }
@@ -69,4 +60,23 @@ body {
 
 #cancel {
   margin-top: 30px;
+}
+
+#submit {
+  margin-top: 30px;
+}
+
+.thumbnail {
+  width: 150px;
+  height: 100px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+
+#order span {
+  margin-left: 70px;
+}
+
+.panel-primary {
+  background-color: aliceblue;
 }

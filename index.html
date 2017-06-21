@@ -68,15 +68,13 @@
       <br>
       <div class="col-md-12">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
-          <!--REVIEW ORDER-->
-
-          <div class="panel panel-default">
+          <div class="panel panel-primary">
             <div class="panel-heading text-center">
               <h4>Review Order</h4>
             </div>
-            <div class="panel-body">
+            <div id="review" class="panel-body">
               <div class="col-md-12">
-                <strong id="subtotal">Subtotal (# item)</strong>
+                <strong id="subtotal">Subtotal</strong>
                 <div id="amount" class="pull-right">
                 </div>
               </div>
@@ -87,10 +85,10 @@
               </div>
               <div class="col-md-12">
                 <small>Shipping</small>
-                <div class="pull-right"><span>-</span></div>
+                <div class="pull-right"><small><b>Digital Delivery</b></small></div>
                 <hr>
               </div>
-              <div class="col-md-12">
+              <div id="pic" class="col-md-12">
                 <strong id="order">Order Total</strong>
                 <div id="newOrder" class="pull-right">
                 </div>
@@ -134,75 +132,14 @@
                   <img src="pictures/cvv.jpg" class="img-rounded" />
                 </div>
               </div>
-
               <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
                 <input id="cancel" type="submit" class="btn btn-danger" value="CANCEL" />
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
                 <input id="submit" type="submit" class="btn btn-warning btn-block" value="PAY NOW" />
               </div>
-                <!--        </div>
-
-              <button type="button" class="btn btn-primary btn-lg btn-block">Checkout</button>
-
-            </div>
-
-          </div>
-
-          <!--REVIEW ORDER END-->
-        </div>
-        <div class="col-md-8 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
-          <!--SHIPPING METHOD-->
-          <div class="panel panel-default">
-            <div class="panel-heading text-center"><h4>Current Cart</h4></div>
-            <div class="panel-body">
-              <table class="table borderless">
-                <thead>
-                  <tr>
-                    <td><strong>Your Cart: # item</strong></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- foreach ($order->lineItems as $line) or some such thing here -->
-                  <tr>
-                    <td class="col-md-3">
-                      <div class="media">
-                        <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://lorempixel.com/460/250/" style="width: 72px; height: 72px;"> </a>
-                        <div class="media-body">
-                          <h5 class="media-heading"> Product Name</h5>
-                          <h5 class="media-heading"> Product Code</h5>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center">$10.99</td>
-                    <td class="text-center">1</td>
-                    <td class="text-right">$32.99</td>
-                    <td class="text-right"><button type="button" class="btn btn-danger">Remove</button></td>
-                  </tr>
-                  <tr>
-                    <td id="picSummary" class="col-md-3">
-                      <div id="media" class="media">
-                        <a id="firstItem" class="thumbnail pull-left" href="#"></a>
-                        <div class="media-body">
-                          <h5 class="media-heading"> Product Name</h5>
-                          <h5 class="media-heading"> Product Code</h5>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center">$10.99</td>
-                    <td class="text-center">1</td>
-                    <td class="text-right"> $32.99</td>
-                    <td class="text-right"><button type="button" class="btn btn-danger">Remove</button></td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
-          <!--SHIPPING METHOD END-->
         </div>
       </div>
     </div>
