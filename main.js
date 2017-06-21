@@ -10,9 +10,8 @@ var places = [
   {id: "8", country: "Rio De Janeiro, Brazil" , airport:"(GIG)", image: "pictures/8.jpg", price:1100, attractions:"Copacabana, Christ the Redeemer, Sugarloaf Mountain, Ipanema, Tijuca Forest, Botafogo" , duration:"xweek"},
   {id: "9", country: "Reykjavik, Iceland" , airport:"(KEF)", image: "pictures/9.jpg", price:1000, attractions:"Blue Lagoon, Gullfoss, Hallgrimskirkja, Dettifoss, Eyjafjallajokull, Askja" , duration:"xweek"}
 ]
-
 var $list = document.querySelector('.list-group')
-
+var msPerDay = 1000 * 60 * 60 * 24
 function createAirport(place) {
   var $airport = document.createElement('li')
   $airport.classList.add('list-group-item')
@@ -23,8 +22,8 @@ function createAirport(place) {
   $airport.textContent = place.country + " " + place.airport
   return $airport
 }
-
-document.addEventListener('keydown', function() {
+var $search = document.querySelector('#search')
+$search.addEventListener('keydown', function() {
   $list.innerHTML = ""
   for (var i = 0; i < places.length; i++) {
     if (places[i].country.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1) {
@@ -32,15 +31,22 @@ document.addEventListener('keydown', function() {
     }
   }
 })
-
 $list.addEventListener("click", function(event){
-  var $imageContainer = document.querySelector(".image-container")
+  var $details = document.querySelector("#details")
   $list.textContent = ""
-  $imageContainer.innerHTML = ""
+  $details.innerHTML = ""
+  var $start = document.querySelector('.start').value
+  //console.log($start)
+  var $end = document.querySelector('.end').value
+  //console.log($end)
+  var startDate = new Date($start)
+  var endDate = new Date($end)
+  var totalTime = Math.round(endDate.getTime()- startDate.getTime()) / (msPerDay)
+  console.log(totalTime)
   var id = event.target.id
-  var place = findPlace (id, places)
-  var $place = renderPlace (place)
-  $imageContainer.appendChild($place)
+  var place = findPlace(id, places)
+  var $place = renderPlace(place, totalTime)
+  $details.appendChild($place)
 })
 function findPlace (id, places) {
   for (var i= 0; i < places.length; i++) {
@@ -50,24 +56,51 @@ function findPlace (id, places) {
     }
   }
 }
-
-function renderPlace (place) {
+function renderPlace (place , days) {
   var $place = document.createElement('div')
+  $place.classList.add('panel')
+  var $details = document.createElement('div')
+  $details.className = 'panel-body panel-default'
+  var $locationWrapper = document.createElement('div')
+  $locationWrapper.classList.add('col-md-12')
+  var $location = document.createElement('h2')
+  $location.textContent = place.country
+  $locationWrapper.appendChild($location)
+  $place.appendChild($locationWrapper)
+  var $imageWrapper = document.createElement('div')
+  $imageWrapper.classList.add('col-md-6')
   var $image = document.createElement('img')
+  $image.classList.add('img-responsive')
   $image.setAttribute('src', "pictures/" + place.id + ".jpg")
-  $place.appendChild($image)
+  $imageWrapper.appendChild($image)
+  $details.appendChild($imageWrapper)
+  var $description = document.createElement('div')
+  $description.classList.add('col-md-6')
   var $price = document.createElement('div')
   var $title = document.createElement('span')
   $title.setAttribute('id', "title")
   var $data = document.createElement('span')
   $data.setAttribute('id', "text")
-  $place.appendChild($price)
-  $price.appendChild($title)
-  $price.appendChild($data)
-  $price = document.createElement('p')
-  $title.textContent = "Price: "
-  $data.textContent = place.price
-
+  $description.appendChild($title)
+  $description.appendChild($data)
+  $details.appendChild($description)
+  $place.appendChild($details)
+  if (days) {
+    $price = document.createElement('p')
+    $title.textContent = "Price: "
+    $data.textContent = "$ " + ((place.price * days) - (place.price * days) * .75)
+    $description.appendChild($price)
+    var $duration = document.createElement('div')
+    var $title = document.createElement('span')
+    $title.setAttribute('id', "title")
+    var $data = document.createElement('span')
+    $data.setAttribute('id', "text")
+    $description.appendChild($duration)
+    $duration.appendChild($title)
+    $duration.appendChild($data)
+    $title.textContent = "Duration: "
+    $data.textContent = days + " days"
+  }
   var $attractions = document.createElement('div')
   var $title = document.createElement('span')
   $title.setAttribute('id', "title")
@@ -76,20 +109,8 @@ function renderPlace (place) {
   $place.appendChild($attractions)
   $attractions.appendChild($title)
   $attractions.appendChild($data)
-  $attractions = document.createElement('p')
   $title.textContent = "Attractions: "
   $data.textContent = place.attractions
-
-  var $duration = document.createElement('div')
-  var $title = document.createElement('span')
-  $title.setAttribute('id', "title")
-  var $data = document.createElement('span')
-  $data.setAttribute('id', "text")
-  $place.appendChild($duration)
-  $duration.appendChild($title)
-  $duration.appendChild($data)
-  $duration = document.createElement('p')
-  $title.textContent = "Duration: "
-  $data.textContent = place.duration
+  $description.appendChild($attractions)
   return $place
 }
