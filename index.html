@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
   <link rel="stylesheet" href="styles.css" type="text/css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="utf-8" />
   <title>Vacation Packages</title>
@@ -54,7 +55,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div id="behind" class="container">
     <div class="row">
       <div class="col-md-12">
         <hr/>
@@ -63,10 +64,10 @@
       </div>
     </div>
   </div>
-  <div class="container-hidden">
+  <div class="container-hidden animated bounceInDown">
     <div class="row">
       <br>
-      <div class="col-md-12">
+      <div id="stack" class="col-md-12">
         <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
           <div class="panel panel-primary">
             <div class="panel-heading text-center">
@@ -105,28 +106,28 @@
                   <h6 class="text-muted"> Credit Card Number</h6>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <input type="text" class="form-control" placeholder="0000" />
+                  <input type="text" class="form-control" maxlength="4" placeholder="0000" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <input type="text" class="form-control" placeholder="0000" />
+                  <input type="text" class="form-control" maxlength="4" placeholder="0000" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <input type="text" class="form-control" placeholder="0000" />
+                  <input type="text" class="form-control" maxlength="4" placeholder="0000" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <input type="text" class="form-control" placeholder="0000" />
+                  <input type="text" class="form-control" maxlength="4" placeholder="0000" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
                   <span class="help-block text-muted small-font">Expiry Month</span>
-                  <input type="text" class="form-control" placeholder="MM" />
+                  <input type="text" class="form-control" maxlength="2" placeholder="MM" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
                   <span class="help-block text-muted small-font">Expiry Year</span>
-                  <input type="text" class="form-control" placeholder="YY" />
+                  <input type="text" class="form-control" maxlength="2" placeholder="YY" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
                   <span class="help-block text-muted small-font"><b>CCV</b></span>
-                  <input type="text" class="form-control" placeholder="CCV" />
+                  <input type="text" class="form-control" maxlength="3" placeholder="CCV" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
                   <img src="pictures/cvv.jpg" class="img-rounded" />
