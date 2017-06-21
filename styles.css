@@ -22,3 +22,51 @@ body {
   position: absolute;
   z-index: 2;
 }
+
+#title {
+  font-weight: bold;
+}
+
+.btn-group {
+  margin-top: 86px;
+  margin-left: 196px;
+}
+
+.btn-default {
+  color: white;
+  font-size: 18px;
+  background-color: rgb(50,178,223);
+  border: 1px;
+  border-color: black;
+}
+
+#firstItem {
+  height: 100px;
+  width: 100px;
+}
+
+.col-md-pull-6 {
+  right: 31%;
+}
+
+.col-md-push-6 {
+  left: 67%;
+}
+
+.credit-card-div span {
+  padding-top:10px;
+  }
+
+.credit-card-div .small-font {
+  font-size: 10px;
+}
+
+.credit-card-div img {
+  margin-top:30px;
+  width: 60px;
+  height: 43px;
+}
+
+#cancel {
+  margin-top: 30px;
+}

@@ -86,7 +86,7 @@ function renderPlace (place , days) {
   $details.appendChild($description)
   $place.appendChild($details)
   if (days) {
-    $price = document.createElement('p')
+    //$price = document.createElement('p')
     $title.textContent = "Price: "
     $data.textContent = "$ " + ((place.price * days) - (place.price * days) * .75)
     $description.appendChild($price)
@@ -101,6 +101,7 @@ function renderPlace (place , days) {
     $title.textContent = "Duration: "
     $data.textContent = days + " days"
   }
+
   var $attractions = document.createElement('div')
   var $title = document.createElement('span')
   $title.setAttribute('id', "title")
@@ -112,5 +113,56 @@ function renderPlace (place , days) {
   $title.textContent = "Attractions: "
   $data.textContent = place.attractions
   $description.appendChild($attractions)
+
+  var $bookingWrapper = document.createElement('div')
+  $bookingWrapper.classList.add('test')
+  var $book = document.createElement('div')
+  $book.classList.add('btn-group')
+  var $button = document.createElement('div')
+  $button.className = 'btn btn-default'
+  $button.textContent = 'BOOK NOW!'
+  $bookingWrapper.appendChild($book)
+  $book.appendChild($button)
+  $description.appendChild($bookingWrapper)
+
+  var $subtotal = document.querySelector('#subtotal')
+  var $amount = document.querySelector('#amount')
+  var $money = document.createElement('span')
+  $money.textContent = "$ " + ((place.price * days) - (place.price * days) * .75)
+  $subtotal.appendChild($amount)
+  $amount.appendChild($money)
+
+  var $tax = document.querySelector('#tax')
+  var $newTax = document.querySelector('#newTax')
+  var $money = document.createElement('span')
+  $money.textContent = "$ " + [(place.price * days) - (place.price * days * .75)] * (.0775)
+  $tax.appendChild($newTax)
+  $newTax.appendChild($money)
+
+  var $order = document.querySelector('#order')
+  var $newOrder = document.querySelector('#newOrder')
+  var $money = document.createElement('span')
+  var calcTax = [(place.price * days) - (place.price * days * .75)] * (.0775)
+  console.log(calcTax)
+  var tripTotal = (place.price * days) - (place.price * days * .75)
+  console.log(tripTotal)
+  $money.textContent = "$ " + (calcTax + tripTotal)
+  console.log($money.textContent)
+  $order.appendChild($newOrder)
+  $newOrder.appendChild($money)
+
+  var $picSummary = document.querySelector('#picSummary')
+  var $media = document.querySelector('#media')
+  var $firstItem = document.querySelector('#firstItem')
+  var $image = document.createElement('img')
+  $image.classList.add('media-object')
+  $image.setAttribute('src', "pictures/" + place.id + ".jpg")
+  $picSummary.appendChild($media)
+  $media.appendChild($firstItem)
+  $firstItem.appendChild($image)
   return $place
+}
+
+function test(place) {
+
 }
