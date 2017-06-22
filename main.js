@@ -10,6 +10,11 @@ var places = [
   {id: "8", country: "Rio De Janeiro, Brazil" , airport:"(GIG)", image: "pictures/8.jpg", price:1100, attractions:"Copacabana, Christ the Redeemer, Sugarloaf Mountain, Ipanema, Tijuca Forest, Botafogo" , duration:"xweek"},
   {id: "9", country: "Reykjavik, Iceland" , airport:"(KEF)", image: "pictures/9.jpg", price:1000, attractions:"Blue Lagoon, Gullfoss, Hallgrimskirkja, Dettifoss, Eyjafjallajokull, Askja" , duration:"xweek"}
 ]
+
+document.querySelector("#review-order").style.display = 'none'
+document.querySelector("#confirmation").style.display = 'none'
+
+
 var $list = document.querySelector('.list-group')
 var msPerDay = 1000 * 60 * 60 * 24
 function createAirport(place) {
@@ -31,8 +36,9 @@ $search.addEventListener('keydown', function() {
     }
   }
 })
+
 $list.addEventListener("click", function(event){
-  var $details = document.querySelector("#details")
+  var $details = document.querySelector('#details')
   $list.textContent = ""
   $details.innerHTML = ""
   var $start = document.querySelector('.start').value
@@ -42,11 +48,37 @@ $list.addEventListener("click", function(event){
   var startDate = new Date($start)
   var endDate = new Date($end)
   var totalTime = Math.round(endDate.getTime()- startDate.getTime()) / (msPerDay)
-  console.log(totalTime)
+  //console.log(totalTime)
   var id = event.target.id
   var place = findPlace(id, places)
   var $place = renderPlace(place, totalTime)
   $details.appendChild($place)
+  var $bookNow = document.querySelector('#book-now')
+  var $cancel = document.querySelector('#cancel')
+  var $payNow = document.querySelector('#submit')
+  var $goBack = document.querySelector('#goBack')
+  $bookNow.addEventListener("click", function(event){
+      //document.querySelector("#details").style.display = 'none'
+      document.querySelector('#review-order').style.display = 'block'
+
+  })
+
+  $cancel.addEventListener("click", function(event){
+      document.querySelector('#review-order').style.display = 'none'
+      document.querySelector('#amount').innerHTML=""
+      document.querySelector('#newTax').innerHTML=""
+      document.querySelector('#newOrder').innerHTML=""
+      document.querySelector('#smallPic').innerHTML=""
+
+  })
+
+  $payNow.addEventListener("click", function(event){
+      document.querySelector('#review-order').style.display = 'none'
+      document.querySelector('#confirmation').style.display = 'block'
+  })
+  $goBack.addEventListener("click", function(event){
+      document.querySelector('#confirmation').style.display = 'none'
+  })
 })
 function findPlace (id, places) {
   for (var i= 0; i < places.length; i++) {
@@ -86,7 +118,7 @@ function renderPlace (place , days) {
   $details.appendChild($description)
   $place.appendChild($details)
   if (days) {
-    //$price = document.createElement('p')
+    $price = document.createElement('p')
     $title.textContent = "Price: "
     $data.textContent = "$ " + ((place.price * days) - (place.price * days) * .75)
     $description.appendChild($price)
@@ -119,6 +151,7 @@ function renderPlace (place , days) {
   var $book = document.createElement('div')
   $book.classList.add('btn-group')
   var $button = document.createElement('div')
+  $button.setAttribute('id', "book-now");
   $button.className = 'btn btn-default'
   $button.textContent = 'BOOK NOW!'
   $bookingWrapper.appendChild($book)
@@ -146,28 +179,25 @@ function renderPlace (place , days) {
   //console.log(calcTax)
   var tripTotal = (place.price * days) - (place.price * days * .75)
   //console.log(tripTotal)
-  $money.textContent = "$ " + (calcTax + tripTotal)
+  $money.textContent = "$ " + (calcTax + tripTotal).toFixed(2)
   //console.log($money.textContent)
   $order.appendChild($newOrder)
   $newOrder.appendChild($money)
 
   var $review = document.querySelector('#review')
   var $pic = document.querySelector('#pic')
-  var $test = document.createElement('div')
-  $test.classList.add('col-md-12')
+  var $reviewDiv = document.createElement('div')
+  $reviewDiv.classList.add('col-md-12')
   var $image = document.createElement('img')
+  $reviewDiv.setAttribute('id', 'smallPic')
   $image.classList.add('thumbnail')
   $image.setAttribute('src', "pictures/" + place.id + ".jpg")
   var $summary = document.createElement('span')
   $summary.textContent = place.country + " -" + days + " days"
-  $review.appendChild($test)
-  $pic.appendChild($test)
-  $test.appendChild($image)
-  $test.appendChild($summary)
+  $review.appendChild($reviewDiv)
+  $pic.appendChild($reviewDiv)
+  $reviewDiv.appendChild($image)
+  $reviewDiv.appendChild($summary)
 
   return $place
-}
-
-function test(place) {
-
 }

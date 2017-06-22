@@ -11,7 +11,10 @@
 <body>
   <div class="container-fluid">
     <div id="header" class="row">
-      <div class="col-md-10 col-md-offset-1"><h1>Travel</h1></div>
+      <div class="col-md-10 col-md-offset-1">
+        <h1>Leggo.</h1>
+        <span>Save money. Travel more. Enjoy life.</span>
+      </div>
     </div>
     <div id="inspiration" class="row">
       <div class="col-md-offset-1 col-md-10">
@@ -24,6 +27,19 @@
             </div>
             <div class="row">
               <div class="col-md-6">
+                <div class="form group">
+                  <label for="startDate">Departing:</label>
+                  <input class="start form-control" type="date" name="startDate">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="endDate">Returning:</label>
+                  <input class="end form-control" type="date" name="endDate">
+                </div>
+              </div>
+              <div class="col-md-12"><hr/></div>
+              <div class="col-md-6">
                 <div class="form-group">
                   <label for="startPoint">Origin:</label>
                   <input class="origin form-control" type="text" value="Orange County (SNA)" readonly="readonly">
@@ -34,19 +50,6 @@
                   <label for="endPoint">Destination:</label>
                   <input id="search" class="search form-control" type="text" placeholder="Where do you want to go?">
                   <ul class="list-group"></ul>
-                </div>
-              </div>
-              <div class="col-md-12"><hr/></div>
-              <div class="col-md-6">
-                <div class="form group">
-                  <label for="startDate">Departing:</label>
-                  <input class="start form-control" type="date" name="startDate">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="endDate">Returning:</label>
-                  <input class="end form-control" type="date" name="endDate">
                 </div>
               </div>
             </div>
@@ -64,7 +67,7 @@
       </div>
     </div>
   </div>
-  <div class="container-hidden animated bounceInDown">
+  <div id="review-order" class="container animated bounceInDown">
     <div class="row">
       <br>
       <div id="stack" class="col-md-12">
@@ -97,13 +100,13 @@
               </div>
               <div class="credit-card-div">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <h6 class="text-muted"> Full Name</h6>
+                  <h6 class="text-muted"> Full Name:</h6>
                 </div>
                 <div class="col-md-12 pad-adjust">
                   <input id="name" type="text" class="form-control" placeholder="Name On The Card" />
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                  <h6 class="text-muted"> Credit Card Number</h6>
+                  <h6 class="text-muted"> Credit Card Number:</h6>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
                   <input type="text" class="form-control" maxlength="4" placeholder="0000" />
@@ -118,20 +121,26 @@
                   <input type="text" class="form-control" maxlength="4" placeholder="0000" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <span class="help-block text-muted small-font">Expiry Month</span>
+                  <span class="help-block text-muted small-font">Expiry Month:</span>
                   <input type="text" class="form-control" maxlength="2" placeholder="MM" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <span class="help-block text-muted small-font">Expiry Year</span>
+                  <span class="help-block text-muted small-font">Expiry Year:</span>
                   <input type="text" class="form-control" maxlength="2" placeholder="YY" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <span class="help-block text-muted small-font"><b>CCV</b></span>
+                  <span class="help-block text-muted small-font"><b>CCV:</b></span>
                   <input type="text" class="form-control" maxlength="3" placeholder="CCV" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
                   <img src="pictures/cvv.jpg" class="img-rounded" />
                 </div>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <h6 class="text-muted"> Email:</h6>
+              </div>
+              <div class="col-md-12 pad-adjust">
+                <input id="email" type="text" class="form-control" placeholder="email@example.com" />
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
                 <input id="cancel" type="submit" class="btn btn-danger" value="CANCEL" />
@@ -139,6 +148,25 @@
               <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
                 <input id="submit" type="submit" class="btn btn-warning btn-block" value="PAY NOW" />
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="confirmation" class="container-hidden animated bounceInDown">
+    <div class="col-md-12">
+      <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
+        <div class="panel panel-primary">
+          <div class="panel-heading text-center">
+            <h4>Order Complete!</h4>
+          </div>
+          <div class="panel-body">
+            <div class="col-md-12">
+              <p>Your itinerary will be emailed to you shortly!</p>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
+              <input id="goBack" type="submit" class="btn btn-success btn-block" value="Go Back" />
             </div>
           </div>
         </div>

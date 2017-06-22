@@ -1,2 +1,2 @@
-# travel-site
-A website for travelers wanting to book a flight.
+# Leggo.
+Leggo. is a web app for travelers wanting to book a vacation package.
