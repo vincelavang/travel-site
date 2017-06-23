@@ -14,7 +14,6 @@ var places = [
 document.querySelector("#review-order").style.display = 'none'
 document.querySelector("#confirmation").style.display = 'none'
 
-
 var $list = document.querySelector('.list-group')
 var msPerDay = 1000 * 60 * 60 * 24
 function createAirport(place) {
@@ -36,16 +35,6 @@ $search.addEventListener('keydown', function() {
     }
   }
 })
-
-function formCheck() {
-  var $formCheck = document.querySelector("#numb");
-  if ($formCheck.checkValidity() == false) {
-    document.querySelector('#confirmation').style.display = 'none'
-  } else {
-      console.log("test2");
-  }
-  return $formCheck
-}
 
 $list.addEventListener("click", function(event){
   var $details = document.querySelector('#details')
@@ -70,7 +59,6 @@ $list.addEventListener("click", function(event){
   $bookNow.addEventListener("click", function(event){
       //document.querySelector("#details").style.display = 'none'
       document.querySelector('#review-order').style.display = 'block'
-
   })
 
   $cancel.addEventListener("click", function(event){
@@ -211,7 +199,3 @@ function renderPlace (place , days) {
 
   return $place
 }
-
-/*document.getElementById('numb').validity.patternMismatch;
-    document.getElementById('numb').validity.patternMismatch;
-    console.log()*/
