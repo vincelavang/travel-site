@@ -13,7 +13,7 @@
     <div id="header" class="row">
       <div class="col-md-10 col-md-offset-1">
         <h1>Leggo.</h1>
-        <span>Save money. Travel more. Enjoy life.</span>
+          <h5>Save money. Travel more. Enjoy life.</h5>
       </div>
     </div>
     <div id="inspiration" class="row">
@@ -98,7 +98,7 @@
                 </div>
                 <hr>
               </div>
-              <div class="credit-card-div">
+              <div id="creditCard" class="credit-card-div">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <h6 class="text-muted"> Full Name:</h6>
                 </div>
@@ -109,28 +109,28 @@
                   <h6 class="text-muted"> Credit Card Number:</h6>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <input type="text" class="form-control" maxlength="4" placeholder="0000" />
+                  <input id="numb" type="text" class="form-control" maxlength="4" placeholder="0000" required pattern= "[0-9]" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <input type="text" class="form-control" maxlength="4" placeholder="0000" />
+                  <input type="text" class="form-control" maxlength="4" placeholder="0000" required pattern= "[0-9]" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <input type="text" class="form-control" maxlength="4" placeholder="0000" />
+                  <input type="text" class="form-control" maxlength="4" placeholder="0000" required pattern= "[0-9]" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <input type="text" class="form-control" maxlength="4" placeholder="0000" />
+                  <input type="text" class="form-control" maxlength="4" placeholder="0000" required pattern= "[0-9]" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <span class="help-block text-muted small-font">Expiry Month:</span>
-                  <input type="text" class="form-control" maxlength="2" placeholder="MM" />
+                  <span class="help-block text-muted small-font">Valid</span>
+                  <input type="text" class="form-control" maxlength="2" placeholder="MM" required pattern= "[0-9]" />
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                  <span class="help-block text-muted small-font">Expiry Year:</span>
-                  <input type="text" class="form-control" maxlength="2" placeholder="YY" />
+                  <span class="help-block text-muted small-font">Thru:</span>
+                  <input type="text" class="form-control" maxlength="2" placeholder="YY" required pattern= "[0-9]"/>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
                   <span class="help-block text-muted small-font"><b>CCV:</b></span>
-                  <input type="text" class="form-control" maxlength="3" placeholder="CCV" />
+                  <input type="text" class="form-control" maxlength="3" placeholder="CCV" required pattern= "[0-9]"/>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3">
                   <img src="pictures/cvv.jpg" class="img-rounded" />
@@ -140,13 +140,13 @@
                 <h6 class="text-muted"> Email:</h6>
               </div>
               <div class="col-md-12 pad-adjust">
-                <input id="email" type="text" class="form-control" placeholder="email@example.com" />
+                <input id="email" type="email" class="form-control" placeholder="email@example.com" />
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
                 <input id="cancel" type="submit" class="btn btn-danger" value="CANCEL" />
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6 pad-adjust">
-                <input id="submit" type="submit" class="btn btn-warning btn-block" value="PAY NOW" />
+                <input id="submit" type="submit" class="btn btn-warning btn-block" onclick="formCheck()" value="PAY NOW" />
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@
     </div>
   </div>
   <div id="confirmation" class="container-hidden animated bounceInDown">
-    <div class="col-md-12">
+    <div id ="orderComplete" class="col-md-12">
       <div class="col-md-4 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
         <div class="panel panel-primary">
           <div class="panel-heading text-center">

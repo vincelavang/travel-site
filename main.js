@@ -37,6 +37,16 @@ $search.addEventListener('keydown', function() {
   }
 })
 
+function formCheck() {
+  var $formCheck = document.querySelector("#numb");
+  if ($formCheck.checkValidity() == false) {
+    document.querySelector('#confirmation').style.display = 'none'
+  } else {
+      console.log("test2");
+  }
+  return $formCheck
+}
+
 $list.addEventListener("click", function(event){
   var $details = document.querySelector('#details')
   $list.textContent = ""
@@ -201,3 +211,7 @@ function renderPlace (place , days) {
 
   return $place
 }
+
+/*document.getElementById('numb').validity.patternMismatch;
+    document.getElementById('numb').validity.patternMismatch;
+    console.log()*/
